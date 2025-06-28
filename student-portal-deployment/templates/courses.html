@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Courses</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <!-- تضمين Bootstrap لتحسين التصميم -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body dir="rtl">
+    <!-- شريط التنقل -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Student Portal</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="تبديل التنقل">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/">الرئيسية</a></li>
+                {% if session['user_id'] %}
+                    <li class="nav-item"><a class="nav-link" href="/dashboard">لوحة التحكم</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">تسجيل الخروج</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="/register">تسجيل</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">تسجيل الدخول</a></li>
+                {% endif %}
+            </ul>
+             <button id="theme-toggle">🌓 تبديل الثيم</button>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="text-center">الدورات المتاحة</h1>
+        <ul class="list-group">
+            {% for course in courses %}
+                <li class="list-group-item">
+                    <strong>{{ course.title }}</strong> - {{ course.description }}
+                    <button class="btn btn-primary enroll-btn float-right" data-course-id="{{ course.id }}">تسجيل في الدورة</button>
+                </li>
+            {% else %}
+                <li class="list-group-item">لا توجد دورات متاحة حاليًا.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+
+<!-- قسم التواصل -->
+<footer style="
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 20px;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+">
+    <h4>📞 تواصل معنا</h4>
+    <p>لأي استفسارات، يمكنك التواصل معنا عبر منصاتنا الاجتماعية:</p>
+
+    <!-- أيقونات شبكات التواصل -->
+    <div>
+        <a href="#"><img src="static/icons/icons8-facebook-50.png" alt="Facebook" width="30"></a>
+        <a href="#"><img src="static/icons/icons8-x-50.png" alt="X (Twitter)" width="30"></a>
+        <a href="#"><img src="static/icons/icons8-instagram-50.png" alt="Instagram" width="30"></a>
+        <a href="#"><img src="static/icons/icons8-linkedin-circled-50.png" alt="LinkedIn" width="30"></a>
+        <a href="#"><img src="static/icons/icons8-whatsapp-50.png" alt="WhatsApp" width="30"></a>
+        <a href="#"><img src="static/icons/icons8-youtube-50.png" alt="Youtube" width="35"></a>
+    </div>
+
+    <!-- رقم التواصل -->
+    <p style="margin-top: 10px;">📧 البريد الإلكتروني: Student_Portal@gmail.com</p>
+    <p>📞 رقم التواصل: +123 456 7890</p>
+</footer>
+
+<!-- دعم الوضع الليلي -->
+<style>
+    /* الوضع العادي */
+    footer {
+        background-color: #f8f9fa;
+        color: #333;
+        padding: 20px;
+        text-align: center;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    /* عند تفعيل الوضع الداكن */
+    .dark-mode footer {
+        background-color: #010916 !important; /* خلفية سوداء تمامًا */
+        color: #fff !important; /* خط أبيض بالكامل */
+    }
+
+    /* تحسين الأيقونات في الوضع الداكن لتشع باللون الأزرق */
+    .dark-mode footer a img {
+        filter: drop-shadow(0px 0px 6px #0d6efd);
+    }
+</style>
+
+
+
+
+    <!-- تضمين مكتبات Bootstrap لتحسين التفاعل -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   
+</body>
+</html>

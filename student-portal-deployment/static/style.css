@@ -1,0 +1,201 @@
+/* تحسين عام للصفحة - الوضع النهاري */
+body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: #ffffff;
+    background-image: url('/static/background.png'); /* خلفية النهار */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #333;
+}
+
+/* --- الوضع الداكن --- */
+.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+    background-image: url('/static/background2.png'); /* خلفية الليل */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* تحسين شريط التنقل */
+.navbar {
+    background-color: #0D6EFD;
+    padding: 12px;
+    transition: background-color 0.3s ease-in-out;
+    position: sticky !important;; 
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.dark-mode .navbar {
+    background-color: #333;
+}
+
+.navbar-brand {
+    color: #102A43 !important;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+/* تحسين الروابط */
+.navbar-nav .nav-link {
+    color: #102A43 !important;
+    font-size: 18px;
+    padding: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.dark-mode .navbar-nav .nav-link {
+    color: #102A43 !important;
+}
+
+/* تأثير الهوفر */
+.navbar-nav .nav-link:hover {
+    background-color: rgba(13, 110, 253, 0.3);
+    box-shadow: 0px 0px 10px #0D6EFD;
+    border-radius: 5px;
+    color: #ffffff !important;
+}
+
+/* تحسين الأزرار */
+button, .btn {
+    background-color: #0D6EFD;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 17px;
+    transition: 0.3s ease-in-out;
+}
+
+.dark-mode button,
+.dark-mode .btn {
+    background-color: #666;
+    color: white;
+}
+
+button:hover, .btn:hover {
+    
+    transform: scale(1.05);
+}
+
+/* تحسين النموذج */
+form {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    margin: auto;
+}
+
+.dark-mode form {
+    background-color: #222;
+    color: white;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* تحسين قائمة الدورات */
+.list-group-item {
+    padding: 15px;
+    font-size: 17px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+}
+
+.dark-mode .list-group-item {
+    background-color: #222;
+    border-color: #444;
+}
+
+/* تحسين الهيكلة العامة */
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding-top: 20px;
+}
+
+/* تأثيرات على العناوين */
+h1 {
+    color: #0D6EFD;
+    text-shadow: 1px 1px 4px rgba(13, 110, 253, 0.2);
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.dark-mode h1 {
+    color: #ffffff;
+}
+
+/* تحسين النصوص */
+.text-center {
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+}
+
+.dark-mode .text-center {
+    color: #ffffff;
+}
+
+/* تحسين بطاقات الدورات */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+}
+
+.dark-mode .card {
+    background-color: #222;
+    border-color: #444;
+    color: white;
+}
+
+/* تحسين الأسئلة الشائعة */
+.accordion .card {
+    background-color: #f8f9fa;
+    border-color: #ddd;
+}
+
+.dark-mode .accordion .card {
+    background-color: #222;
+    border-color: #444;
+    color: white;
+}
+
+.dark-mode .accordion .btn-link {
+    color: #ddd;
+}
+
+/* تأثير بسيط عند التبديل */
+.transition-effect {
+    transition: all 0.3s ease-in-out;
+}
+
+.lead {
+    color: #000000;
+    font-size: 25px !important;
+    font-weight: bold;
+    text-shadow: 0px 0px 8px #0D6EFD; /* تأثير التوهج */
+}
+
+.dark-mode .lead {
+    color: #ffffff; /* اللون الأبيض */
+}
+
+
+
+
+
+
+
+
+

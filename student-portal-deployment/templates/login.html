@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+    <!-- تضمين Bootstrap لتحسين التصميم -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body dir="rtl">
+    <!-- شريط التنقل -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Student Portal</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="تبديل التنقل">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/">الرئيسية</a></li>
+                <li class="nav-item"><a class="nav-link" href="/courses">الدورات</a></li>
+                <li class="nav-item"><a class="nav-link" href="/register">إنشاء حساب جديد</a></li>
+            </ul>
+            <button id="theme-toggle">🌓 تبديل الثيم</button>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+
+    <div class="container mt-4">
+        <h1 class="text-center">تسجيل الدخول</h1>
+        <form action="/login" method="POST" class="mx-auto w-50 border p-4 rounded shadow">
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني:</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">كلمة المرور:</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">تسجيل الدخول</button>
+        </form>
+    </div>
+
+
+    <!-- تضمين مكتبات Bootstrap لتحسين التفاعل -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+
+</body>
+</html>

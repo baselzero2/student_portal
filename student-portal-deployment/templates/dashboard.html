@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+    <!-- تضمين Bootstrap لتحسين المظهر -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <button id="theme-toggle">🌓 تبديل الثيم</button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <!-- رابط الصفحة الرئيسية -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/">الرئيسية</a>
+                </li>
+                <!-- رابط صفحة الدورات -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/courses">الدورات</a>
+                </li>
+                <!-- رابط تسجيل الخروج -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">تسجيل الخروج</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>Welcome, {{ user_name }}</h1>
+        <p>Your enrolled courses:</p>
+        <ul>
+            {% for course in courses %}
+                <li>{{ course.title }}</li>
+            {% else %}
+                <li>You have not enrolled in any courses yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+
+    <a href="/profile" class="btn btn-info">تحديث المعلومات الشخصية</a>
+
+
+    <!-- تضمين jQuery و Bootstrap JS لتحسين التفاعل -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+
+</body>
+</html>

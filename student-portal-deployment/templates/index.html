@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body dir="rtl">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Student Portal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            {% if session['user_id'] %}
+                <li class="nav-item"><a class="nav-link" href="/dashboard">لوحة التحكم</a></li>
+                <li class="nav-item"><a class="nav-link" href="/logout">تسجيل الخروج</a></li>
+            {% else %}
+                <li class="nav-item"><a class="nav-link" href="/register">تسجيل</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login">تسجيل الدخول</a></li>
+            {% endif %}
+            <li class="nav-item"><a class="nav-link" href="/courses">الدورات</a></li>
+        </ul>
+        <button id="theme-toggle">🌓 تبديل الثيم</button>
+    </div>
+</nav>
+
+
+    <div class="container text-center mt-4">
+        <h1 id="b">مرحبًا بك في بوابة الطلاب</h1>
+        <p>إدارة الدورات والتسجيل بسهولة عبر منصتنا!</p>
+    </div>
+
+
+    <!-- قسم أهم الدورات -->
+    <div class="container mt-5">
+        <h2 class="text-center">أهم الدورات المتاحة</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Python Basics</h5>
+                        <p class="card-text">تعلم أساسيات البرمجة بلغة بايثون.</p>
+                        <a href="/courses" class="btn btn-primary">عرض الدورة</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Web Development</h5>
+                        <p class="card-text">تعرف على تطوير الويب باستخدام Flask و Django.</p>
+                        <a href="/courses" class="btn btn-primary">عرض الدورة</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Cyber Security</h5>
+                        <p class="card-text">أساسيات الأمن السيبراني وحماية البيانات.</p>
+                        <a href="/courses" class="btn btn-primary">عرض الدورة</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- قسم الأسئلة الشائعة -->
+<div class="container mt-5">
+    <h2 class="text-center">الأسئلة الشائعة</h2>
+    <div class="accordion" id="faqAccordion">
+        <div class="card">
+            <div class="card-header" id="faqHeading1">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faq1">
+                        كيف يمكنني التسجيل في المنصة؟
+                    </button>
+                </h5>
+            </div>
+            <div id="faq1" class="collapse" aria-labelledby="faqHeading1" data-parent="#faqAccordion">
+                <div class="card-body">
+                    يمكنك التسجيل بالنقر على "إنشاء حساب" وإدخال بياناتك، ثم تسجيل الدخول للوصول إلى الدورات.
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header" id="faqHeading2">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faq2">
+                        كيف يمكنني التسجيل في دورة؟
+                    </button>
+                </h5>
+            </div>
+            <div id="faq2" class="collapse" aria-labelledby="faqHeading2" data-parent="#faqAccordion">
+                <div class="card-body">
+                    بعد تسجيل الدخول، انتقل إلى صفحة "الدورات"، ثم اضغط على زر "تسجيل في الدورة" للدورة التي تريدها.
+                </div>
+            </div>
+        </div>
+</div>
+<div class="card">
+    <div class="card-header" id="faqHeading5">
+        <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faq5">
+                هل هناك مدة زمنية محددة لإكمال الدورات؟
+            </button>
+        </h5>
+    </div>
+    <div id="faq5" class="collapse" aria-labelledby="faqHeading5" data-parent="#faqAccordion">
+        <div class="card-body">
+            تعتمد مدة إكمال الدورات على نوع الدورة. بعض الدورات لها مدة محددة يجب إنهاؤها خلالها، بينما يمكنك الوصول إلى دورات أخرى بدون قيود زمنية. يُفضل مراجعة تفاصيل الدورة لمعرفة المدة المتاحة.
+        </div>
+    </div>
+</div>
+
+
+        <!-- سؤال جديد: هل هناك شهادات معتمدة؟ -->
+        <div class="card">
+            <div class="card-header" id="faqHeading4">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faq4">
+                        هل هناك شهادات معتمدة بعد إكمال الدورة؟
+                    </button>
+                </h5>
+            </div>
+            <div id="faq4" class="collapse" aria-labelledby="faqHeading4" data-parent="#faqAccordion">
+                <div class="card-body">
+                    نعم! بعض الدورات تقدم شهادات إتمام يمكنك تنزيلها بعد اجتياز الاختبارات المطلوبة.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- قسم أهداف المنصة -->
+<div class="container mt-5 text-center">
+    <h2 class="text-center">أهداف المنصة</h2>
+    <p class="lead">نهدف إلى توفير بيئة تعليمية شاملة وسهلة الاستخدام، تمكن الطلاب من:</p>
+    <ul class="list-group">
+        <li class="list-group-item">📚 اكتساب مهارات جديدة في مختلف المجالات الأكاديمية والتقنية.</li>
+        <li class="list-group-item">🎯 تحسين فرصهم في سوق العمل من خلال دورات متخصصة.</li>
+        <li class="list-group-item">🤝 التواصل مع الخبراء والمشاركة في مجتمع تعليمي متفاعل.</li>
+        <li class="list-group-item">🚀 تطوير إمكانياتهم من خلال موارد تعليمية متكاملة.</li>
+    </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- قسم التواصل -->
+<footer style="
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 20px;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+">
+    <h4>📞 تواصل معنا</h4>
+    <p>لأي استفسارات، يمكنك التواصل معنا عبر منصاتنا الاجتماعية:</p>
+
+    <!-- أيقونات شبكات التواصل -->
+    <div>
+        <a href="#"><img src="static/icons/icons8-facebook-50.png" alt="Facebook" width="30"></a>
+        <a href="#"><img src="static/icons/icons8-x-50.png" alt="X (Twitter)" width="30"></a>
+        <a href="#"><img src="static/icons/icons8-instagram-50.png" alt="Instagram" width="30"></a>
+        <a href="#"><img src="static/icons/icons8-linkedin-circled-50.png" alt="LinkedIn" width="30"></a>
+        <a href="#"><img src="static/icons/icons8-whatsapp-50.png" alt="WhatsApp" width="30"></a>
+        <a href="#"><img src="static/icons/icons8-youtube-50.png" alt="Youtube" width="35"></a>
+    </div>
+
+    <!-- رقم التواصل -->
+    <p style="margin-top: 10px;">📧 البريد الإلكتروني: Student_Portal@gmail.com</p>
+    <p>📞 رقم التواصل: +123 456 7890</p>
+</footer>
+
+<!-- دعم الوضع الليلي -->
+<style>
+    /* الوضع العادي */
+    footer {
+        background-color: #f8f9fa;
+        color: #333;
+        padding: 20px;
+        text-align: center;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    /* عند تفعيل الوضع الداكن */
+    .dark-mode footer {
+        background-color: #010916 !important; /* خلفية سوداء تمامًا */
+        color: #fff !important; /* خط أبيض بالكامل */
+    }
+
+    /* تحسين الأيقونات في الوضع الداكن لتشع باللون الأزرق */
+    .dark-mode footer a img {
+        filter: drop-shadow(0px 0px 6px #0d6efd);
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

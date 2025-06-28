@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>تحديث المعلومات الشخصية</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+</head>
+<body dir="rtl">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Student Portal</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/dashboard">لوحة التحكم</a></li>
+                <li class="nav-item"><a class="nav-link" href="/courses">الدورات</a></li>
+                <li class="nav-item"><a class="nav-link" href="/logout">تسجيل الخروج</a></li>
+            </ul>
+            <button id="theme-toggle">🌓 تبديل الثيم</button>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center">تحديث المعلومات الشخصية</h1>
+        <form action="/profile" method="POST" class="mx-auto w-50 border p-4 rounded shadow">
+            <div class="form-group">
+                <label for="name">الاسم الكامل:</label>
+                <input type="text" id="name" name="name" class="form-control" value="{{ student.name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني:</label>
+                <input type="email" id="email" name="email" class="form-control" value="{{ student.email }}" required>
+            </div>
+            <div class="form-group">
+                <label for="password">كلمة المرور الجديدة (اختياري):</label>
+                <input type="password" id="password" name="password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">تحديث المعلومات</button>
+        </form>
+    </div>
+    <form action="/delete_account" method="POST" onsubmit="return confirm('هل أنت متأكد أنك تريد حذف حسابك نهائيًا؟ هذه العملية لا يمكن التراجع عنها.')">
+    <button type="submit" class="btn btn-danger">❌ حذف الحساب</button>
+</form>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

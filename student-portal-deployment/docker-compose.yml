@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: student_portal
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+  app:
+    build: .
+    ports:
+      - "5001:5000"
+    environment:
+      DATABASE_URL: mysql+pymysql://root:rootpassword@db/student_portal
+    depends_on:
+      - db
+    command: sh -c "while ! nc -z db 3306; do sleep 1; done; python app.py"
+volumes:
+  mysql_data:
